@@ -41,7 +41,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 800px; /* 默认宽度，会被JS动态调整 */
+  width: 600px; /* 默认宽度，会被JS动态调整 */
   max-width: 90%;
   height: 50px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -65,7 +65,8 @@ body {
   outline: none;
   background: transparent;
   font-size: 16px;
-  color: #333;
+  color: #000;
+  font-weight: 500;
 }
 
 .search-input::placeholder {
