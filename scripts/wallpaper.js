@@ -9,7 +9,7 @@ class Wallpaper {
     this.wallpaperContainer = document.getElementById('wallpaper-container')
     this.wallpaperOverlay = document.getElementById('wallpaper-overlay')
     this.currentSettings = {
-      imageUrl: null,
+      imageUrl: 'assets/images/default.png', // 默认背景图片
       blur: 0,
       overlayOpacity: 0.3,
     }
@@ -54,7 +54,8 @@ class Wallpaper {
     if (this.currentSettings.imageUrl) {
       this.wallpaperContainer.style.backgroundImage = `url(${this.currentSettings.imageUrl})`
     } else {
-      this.wallpaperContainer.style.backgroundImage = 'none'
+      // 如果没有设置壁纸，使用默认背景
+      this.wallpaperContainer.style.backgroundImage = `url(assets/images/default.png)`
     }
 
     // 应用模糊效果
@@ -142,13 +143,13 @@ class Wallpaper {
    * 移除壁纸
    */
   async removeWallpaper() {
-    this.currentSettings.imageUrl = null
+    this.currentSettings.imageUrl = 'assets/images/default.png' // 恢复到默认背景
     this.applyWallpaper()
 
     // 保存设置
     try {
       await storageManager.updateCategory('wallpaper', {
-        imageUrl: null,
+        imageUrl: 'assets/images/default.png', // 恢复到默认背景
       })
     } catch (error) {
       console.error('Failed to remove wallpaper:', error)
@@ -207,7 +208,7 @@ class Wallpaper {
    */
   async resetSettings() {
     this.currentSettings = {
-      imageUrl: null,
+      imageUrl: 'assets/images/default.png', // 默认背景图片
       blur: 0,
       overlayOpacity: 0.3,
     }

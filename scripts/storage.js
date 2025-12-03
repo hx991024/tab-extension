@@ -15,7 +15,7 @@ class StorageManager {
       },
       // 壁纸设置
       wallpaper: {
-        imageUrl: null, // Base64 字符串
+        imageUrl: 'assets/images/default.png', // 默认背景图片
         blur: 0,
         overlayOpacity: 0.3,
       },

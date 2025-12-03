@@ -29,6 +29,7 @@ class Settings {
 
     // 壁纸设置元素
     this.wallpaperUpload = document.getElementById('wallpaper-upload')
+    this.wallpaperReset = document.getElementById('wallpaper-reset')
     this.wallpaperBlur = document.getElementById('wallpaper-blur')
     this.wallpaperBlurValue = document.getElementById('wallpaper-blur-value')
     this.wallpaperOverlayOpacity = document.getElementById(
@@ -184,6 +185,10 @@ class Settings {
     // 壁纸设置事件
     this.wallpaperUpload.addEventListener('change', (e) => {
       this.handleWallpaperUpload(e)
+    })
+
+    this.wallpaperReset.addEventListener('click', () => {
+      this.handleWallpaperReset()
     })
 
     this.wallpaperBlur.addEventListener('input', (e) => {
@@ -362,6 +367,23 @@ class Settings {
 
     // 清空文件输入，允许重复选择同一文件
     e.target.value = ''
+  }
+
+  /**
+   * 处理壁纸重置
+   */
+  async handleWallpaperReset() {
+    if (!confirm('确定要重置为默认壁纸吗？')) {
+      return
+    }
+
+    try {
+      // 触发壁纸重置事件
+      this.emit('wallpaperReset')
+    } catch (error) {
+      console.error('Failed to reset wallpaper:', error)
+      alert('重置壁纸失败: ' + error.message)
+    }
   }
 
   /**

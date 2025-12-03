@@ -133,6 +133,16 @@ class App {
       }
     })
 
+    // 壁纸重置
+    document.addEventListener('wallpaperReset', async () => {
+      try {
+        await this.wallpaper.resetSettings()
+      } catch (error) {
+        console.error('壁纸重置失败:', error)
+        alert('壁纸重置失败: ' + error.message)
+      }
+    })
+
     // 壁纸模糊变化
     document.addEventListener('wallpaperBlurChanged', (e) => {
       this.wallpaper.setBlur(e.detail)
