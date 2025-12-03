@@ -1,0 +1,123 @@
+/* 搜索框组件增强样式 */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 600px; /* 默认宽度，会被JS动态调整 */
+  max-width: 90%;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: width 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.search-container:focus-within {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+}
+
+.search-engine-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+/* 时钟组件增强样式 */
+.clock-section {
+  text-align: center;
+  color: var(--text-color);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.time {
+  font-size: 8rem;
+  font-weight: 200;
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+  transition: color 0.3s ease;
+}
+
+.date {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* 深色主题下的组件样式调整 */
+[data-theme='dark'] .search-container {
+  background-color: rgba(50, 50, 50, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .search-input {
+  color: #f5f5f7;
+}
+
+[data-theme='dark'] .search-input::placeholder {
+  color: #a1a1a6;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .time {
+    font-size: 5rem;
+  }
+
+  .date {
+    font-size: 1.2rem;
+  }
+
+  .search-container {
+    height: 45px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .time {
+    font-size: 4rem;
+  }
+
+  .date {
+    font-size: 1rem;
+  }
+
+  .search-container {
+    height: 40px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .search-engine-icon {
+    width: 18px;
+    height: 18px;
+    margin: 0 12px;
+  }
+}

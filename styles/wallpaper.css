@@ -1,0 +1,51 @@
+/* 壁纸容器 */
+.wallpaper-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: filter 0.3s ease;
+}
+
+/* 壁纸遮罩层 */
+.wallpaper-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3); /* 默认遮罩透明度 */
+  transition: background-color 0.3s ease;
+}
+
+/* 确保主内容在壁纸之上 */
+.main-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* 设置抽屉在壁纸之上 */
+.settings-drawer {
+  z-index: 100;
+}
+
+/* 设置按钮在壁纸之上 */
+.settings-toggle {
+  z-index: 100;
+}
+
+/* 模态框在壁纸之上 */
+.modal {
+  z-index: 1000;
+}
+
+/* 深色主题下的遮罩调整 */
+[data-theme='dark'] .wallpaper-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* 深色主题下遮罩更深 */
+}
