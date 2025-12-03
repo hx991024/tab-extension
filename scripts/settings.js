@@ -13,6 +13,12 @@ class Settings {
     this.tabContents = document.querySelectorAll('.tab-content')
     this.currentTab = 'general'
 
+    // 防抖定时器
+    this.searchWidthDebounce = null
+    this.searchOpacityDebounce = null
+    this.wallpaperBlurDebounce = null
+    this.wallpaperOverlayOpacityDebounce = null
+
     // 设置元素
     this.searchWidth = document.getElementById('search-width')
     this.searchWidthValue = document.getElementById('search-width-value')
@@ -144,13 +150,27 @@ class Settings {
     this.searchWidth.addEventListener('input', (e) => {
       const value = e.target.value
       this.searchWidthValue.textContent = `${value}px`
-      this.updateSearchWidth(value)
+
+      // 使用防抖减少更新频率
+      if (this.searchWidthDebounce) {
+        clearTimeout(this.searchWidthDebounce)
+      }
+      this.searchWidthDebounce = setTimeout(() => {
+        this.updateSearchWidth(value)
+      }, 300)
     })
 
     this.searchOpacity.addEventListener('input', (e) => {
       const value = e.target.value
       this.searchOpacityValue.textContent = value
-      this.updateSearchOpacity(value)
+
+      // 使用防抖减少更新频率
+      if (this.searchOpacityDebounce) {
+        clearTimeout(this.searchOpacityDebounce)
+      }
+      this.searchOpacityDebounce = setTimeout(() => {
+        this.updateSearchOpacity(value)
+      }, 300)
     })
 
     this.openIn.addEventListener('change', (e) => {
@@ -169,13 +189,27 @@ class Settings {
     this.wallpaperBlur.addEventListener('input', (e) => {
       const value = e.target.value
       this.wallpaperBlurValue.textContent = `${value}px`
-      this.updateWallpaperBlur(value)
+
+      // 使用防抖减少更新频率
+      if (this.wallpaperBlurDebounce) {
+        clearTimeout(this.wallpaperBlurDebounce)
+      }
+      this.wallpaperBlurDebounce = setTimeout(() => {
+        this.updateWallpaperBlur(value)
+      }, 300)
     })
 
     this.wallpaperOverlayOpacity.addEventListener('input', (e) => {
       const value = e.target.value
       this.wallpaperOverlayOpacityValue.textContent = value
-      this.updateWallpaperOverlayOpacity(value)
+
+      // 使用防抖减少更新频率
+      if (this.wallpaperOverlayOpacityDebounce) {
+        clearTimeout(this.wallpaperOverlayOpacityDebounce)
+      }
+      this.wallpaperOverlayOpacityDebounce = setTimeout(() => {
+        this.updateWallpaperOverlayOpacity(value)
+      }, 300)
     })
 
     // 搜索引擎设置事件

@@ -60,147 +60,177 @@
           ×
         </button>
       </div>
-      <nav class="settings-nav">
-        <ul>
-          <li>
-            <a href="#general" class="nav-link active" data-tab="general"
-              >常规设置</a
-            >
-          </li>
-          <li>
-            <a href="#wallpaper" class="nav-link" data-tab="wallpaper">壁纸</a>
-          </li>
-          <li>
-            <a href="#engines" class="nav-link" data-tab="engines">搜索引擎</a>
-          </li>
-          <li>
-            <a href="#theme" class="nav-link" data-tab="theme">主题切换</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="settings-content">
-        <!-- 常规设置 -->
-        <div id="general-tab" class="tab-content active">
-          <div class="setting-item">
-            <label for="search-width">搜索框宽度</label>
-            <input
-              type="range"
-              id="search-width"
-              min="400"
-              max="900"
-              value="600"
-            />
-            <span id="search-width-value">600px</span>
-          </div>
-          <div class="setting-item">
-            <label for="search-opacity">搜索框透明度</label>
-            <input
-              type="range"
-              id="search-opacity"
-              min="0.2"
-              max="1"
-              step="0.1"
-              value="0.8"
-            />
-            <span id="search-opacity-value">0.8</span>
-          </div>
-          <div class="setting-item">
-            <label for="open-in">搜索打开方式</label>
-            <select id="open-in">
-              <option value="new-tab">新标签页</option>
-              <option value="current-tab">当前标签页</option>
-            </select>
-          </div>
-          <div class="setting-item">
-            <label for="tab-switch">Tab键切换搜索引擎</label>
-            <div class="toggle-switch">
-              <input type="checkbox" id="tab-switch" checked />
-              <span class="slider"></span>
+      <div class="settings-body">
+        <nav class="settings-nav">
+          <ul>
+            <li>
+              <a href="#general" class="nav-link active" data-tab="general"
+                >常规设置</a
+              >
+            </li>
+            <li>
+              <a href="#wallpaper" class="nav-link" data-tab="wallpaper"
+                >壁纸</a
+              >
+            </li>
+            <li>
+              <a href="#engines" class="nav-link" data-tab="engines"
+                >搜索引擎</a
+              >
+            </li>
+            <li>
+              <a href="#theme" class="nav-link" data-tab="theme">主题切换</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="settings-content">
+          <!-- 常规设置 -->
+          <div id="general-tab" class="tab-content active">
+            <div class="setting-item">
+              <label for="search-width">搜索框宽度</label>
+              <div class="setting-item-control">
+                <input
+                  type="range"
+                  id="search-width"
+                  min="400"
+                  max="900"
+                  value="800"
+                />
+                <span id="search-width-value">800px</span>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label for="search-opacity">搜索框透明度</label>
+              <div class="setting-item-control">
+                <input
+                  type="range"
+                  id="search-opacity"
+                  min="0.2"
+                  max="1"
+                  step="0.1"
+                  value="0.8"
+                />
+                <span id="search-opacity-value">0.8</span>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label for="open-in">搜索打开方式</label>
+              <div class="setting-item-control">
+                <select id="open-in">
+                  <option value="new-tab">新标签页</option>
+                  <option value="current-tab">当前标签页</option>
+                </select>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label for="tab-switch">Tab键切换搜索引擎</label>
+              <div class="setting-item-control">
+                <div class="toggle-switch">
+                  <input type="checkbox" id="tab-switch" checked />
+                  <span class="slider"></span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- 壁纸设置 -->
-        <div id="wallpaper-tab" class="tab-content">
-          <div class="setting-item">
-            <label for="wallpaper-upload">上传本地壁纸</label>
-            <input
-              type="file"
-              id="wallpaper-upload"
-              accept="image/jpeg, image/png, image/webp"
-            />
-          </div>
-          <div class="setting-item">
-            <label for="wallpaper-blur">壁纸模糊强度</label>
-            <input
-              type="range"
-              id="wallpaper-blur"
-              min="0"
-              max="20"
-              value="0"
-            />
-            <span id="wallpaper-blur-value">0px</span>
-          </div>
-          <div class="setting-item">
-            <label for="wallpaper-overlay-opacity">遮罩透明度</label>
-            <input
-              type="range"
-              id="wallpaper-overlay-opacity"
-              min="0"
-              max="0.8"
-              step="0.1"
-              value="0.3"
-            />
-            <span id="wallpaper-overlay-opacity-value">0.3</span>
-          </div>
-        </div>
-
-        <!-- 搜索引擎设置 -->
-        <div id="engines-tab" class="tab-content">
-          <div class="setting-item">
-            <label for="default-engine">默认搜索引擎</label>
-            <select id="default-engine">
-              <option value="google">Google</option>
-              <option value="bing">Bing</option>
-              <option value="baidu">百度</option>
-              <option value="duckduckgo">DuckDuckGo</option>
-            </select>
-          </div>
-          <div class="engines-list" id="engines-list">
-            <!-- 动态生成搜索引擎列表 -->
-          </div>
-          <button id="add-engine" class="add-engine-btn">
-            添加自定义搜索引擎
-          </button>
-        </div>
-
-        <!-- 主题设置 -->
-        <div id="theme-tab" class="tab-content">
-          <div class="setting-item">
-            <label>主题模式</label>
-            <div class="theme-options">
-              <div class="theme-option">
+          <!-- 壁纸设置 -->
+          <div id="wallpaper-tab" class="tab-content">
+            <div class="setting-item">
+              <label for="wallpaper-upload">上传本地壁纸</label>
+              <div class="setting-item-control">
                 <input
-                  type="radio"
-                  id="theme-system"
-                  name="theme"
-                  value="system"
-                  checked
+                  type="file"
+                  id="wallpaper-upload"
+                  accept="image/jpeg, image/png, image/webp"
                 />
-                <label for="theme-system">跟随系统</label>
+                <label for="wallpaper-upload" class="file-upload-btn"
+                  >选择文件</label
+                >
               </div>
-              <div class="theme-option">
+            </div>
+            <div class="setting-item">
+              <label for="wallpaper-blur">壁纸模糊强度</label>
+              <div class="setting-item-control">
                 <input
-                  type="radio"
-                  id="theme-light"
-                  name="theme"
-                  value="light"
+                  type="range"
+                  id="wallpaper-blur"
+                  min="0"
+                  max="20"
+                  value="0"
                 />
-                <label for="theme-light">浅色主题</label>
+                <span id="wallpaper-blur-value">0px</span>
               </div>
-              <div class="theme-option">
-                <input type="radio" id="theme-dark" name="theme" value="dark" />
-                <label for="theme-dark">深色主题</label>
+            </div>
+            <div class="setting-item">
+              <label for="wallpaper-overlay-opacity">遮罩透明度</label>
+              <div class="setting-item-control">
+                <input
+                  type="range"
+                  id="wallpaper-overlay-opacity"
+                  min="0"
+                  max="0.8"
+                  step="0.1"
+                  value="0.3"
+                />
+                <span id="wallpaper-overlay-opacity-value">0.3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 搜索引擎设置 -->
+          <div id="engines-tab" class="tab-content">
+            <div class="setting-item">
+              <label for="default-engine">默认搜索引擎</label>
+              <div class="setting-item-control">
+                <select id="default-engine">
+                  <option value="google">Google</option>
+                  <option value="bing">Bing</option>
+                  <option value="baidu">百度</option>
+                  <option value="duckduckgo">DuckDuckGo</option>
+                </select>
+              </div>
+            </div>
+            <div class="engines-list" id="engines-list">
+              <!-- 动态生成搜索引擎列表 -->
+            </div>
+            <button id="add-engine" class="add-engine-btn">
+              添加自定义搜索引擎
+            </button>
+          </div>
+
+          <!-- 主题设置 -->
+          <div id="theme-tab" class="tab-content">
+            <div class="setting-item">
+              <label>主题模式</label>
+              <div class="theme-options">
+                <div class="theme-option">
+                  <input
+                    type="radio"
+                    id="theme-system"
+                    name="theme"
+                    value="system"
+                    checked
+                  />
+                  <label for="theme-system">跟随系统</label>
+                </div>
+                <div class="theme-option">
+                  <input
+                    type="radio"
+                    id="theme-light"
+                    name="theme"
+                    value="light"
+                  />
+                  <label for="theme-light">浅色主题</label>
+                </div>
+                <div class="theme-option">
+                  <input
+                    type="radio"
+                    id="theme-dark"
+                    name="theme"
+                    value="dark"
+                  />
+                  <label for="theme-dark">深色主题</label>
+                </div>
               </div>
             </div>
           </div>

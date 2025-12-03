@@ -278,21 +278,6 @@ class App {
     )
     document.removeEventListener('openInChanged', this.updateOpenIn)
     document.removeEventListener('tabSwitchChanged', this.updateTabSwitch)
-    document.removeEventListener('wallpaperUpload', this.handleWallpaperUpload)
-    document.removeEventListener(
-      'wallpaperBlurChanged',
-      this.handleWallpaperBlur,
-    )
-    document.removeEventListener(
-      'wallpaperOverlayOpacityChanged',
-      this.handleWallpaperOverlayOpacity,
-    )
-    document.removeEventListener(
-      'defaultEngineChanged',
-      this.handleDefaultEngineChanged,
-    )
-    document.removeEventListener('enginesUpdated', this.handleEnginesUpdated)
-    document.removeEventListener('themeChanged', this.handleThemeChanged)
   }
 }
 
