@@ -32,6 +32,7 @@
             class="search-input"
             placeholder="搜索互联网..."
             autocomplete="off"
+            spellcheck="false"
           />
         </div>
       </header>
@@ -94,9 +95,35 @@
                   id="search-width"
                   min="400"
                   max="900"
-                  value="800"
+                  value="600"
                 />
-                <span id="search-width-value">800px</span>
+                <span id="search-width-value">600px</span>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label for="search-height">搜索框高度</label>
+              <div class="setting-item-control">
+                <input
+                  type="range"
+                  id="search-height"
+                  min="40"
+                  max="70"
+                  value="50"
+                />
+                <span id="search-height-value">50px</span>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label for="search-radius">搜索框圆角</label>
+              <div class="setting-item-control">
+                <input
+                  type="range"
+                  id="search-radius"
+                  min="0"
+                  max="30"
+                  value="12"
+                />
+                <span id="search-radius-value">12px</span>
               </div>
             </div>
             <div class="setting-item">
@@ -129,6 +156,14 @@
                   <input type="checkbox" id="tab-switch" checked />
                   <span class="slider"></span>
                 </div>
+              </div>
+            </div>
+            <div class="setting-item">
+              <label>重置设置</label>
+              <div class="setting-item-control">
+                <button id="reset-settings" class="reset-wallpaper-btn">
+                  重置为默认值
+                </button>
               </div>
             </div>
           </div>

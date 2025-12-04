@@ -15,6 +15,8 @@ class Settings {
 
     // 防抖定时器
     this.searchWidthDebounce = null
+    this.searchHeightDebounce = null
+    this.searchRadiusDebounce = null
     this.searchOpacityDebounce = null
     this.wallpaperBlurDebounce = null
     this.wallpaperOverlayOpacityDebounce = null
@@ -22,10 +24,15 @@ class Settings {
     // 设置元素
     this.searchWidth = document.getElementById('search-width')
     this.searchWidthValue = document.getElementById('search-width-value')
+    this.searchHeight = document.getElementById('search-height')
+    this.searchHeightValue = document.getElementById('search-height-value')
+    this.searchRadius = document.getElementById('search-radius')
+    this.searchRadiusValue = document.getElementById('search-radius-value')
     this.searchOpacity = document.getElementById('search-opacity')
     this.searchOpacityValue = document.getElementById('search-opacity-value')
     this.openIn = document.getElementById('open-in')
     this.tabSwitch = document.getElementById('tab-switch')
+    this.resetSettings = document.getElementById('reset-settings')
 
     // 壁纸设置元素
     this.wallpaperUpload = document.getElementById('wallpaper-upload')
@@ -89,6 +96,10 @@ class Settings {
       const generalSettings = await storageManager.getCategory('general')
       this.searchWidth.value = generalSettings.searchWidth || 600
       this.searchWidthValue.textContent = `${this.searchWidth.value}px`
+      this.searchHeight.value = generalSettings.searchHeight || 50
+      this.searchHeightValue.textContent = `${this.searchHeight.value}px`
+      this.searchRadius.value = generalSettings.searchRadius || 12
+      this.searchRadiusValue.textContent = `${this.searchRadius.value}px`
       this.searchOpacity.value = generalSettings.searchOpacity || 0.8
       this.searchOpacityValue.textContent = this.searchOpacity.value
       this.openIn.value = generalSettings.openIn || 'new-tab'
@@ -161,6 +172,32 @@ class Settings {
       }, 300)
     })
 
+    this.searchHeight.addEventListener('input', (e) => {
+      const value = e.target.value
+      this.searchHeightValue.textContent = `${value}px`
+
+      // 使用防抖减少更新频率
+      if (this.searchHeightDebounce) {
+        clearTimeout(this.searchHeightDebounce)
+      }
+      this.searchHeightDebounce = setTimeout(() => {
+        this.updateSearchHeight(value)
+      }, 300)
+    })
+
+    this.searchRadius.addEventListener('input', (e) => {
+      const value = e.target.value
+      this.searchRadiusValue.textContent = `${value}px`
+
+      // 使用防抖减少更新频率
+      if (this.searchRadiusDebounce) {
+        clearTimeout(this.searchRadiusDebounce)
+      }
+      this.searchRadiusDebounce = setTimeout(() => {
+        this.updateSearchRadius(value)
+      }, 300)
+    })
+
     this.searchOpacity.addEventListener('input', (e) => {
       const value = e.target.value
       this.searchOpacityValue.textContent = value
@@ -180,6 +217,10 @@ class Settings {
 
     this.tabSwitch.addEventListener('change', (e) => {
       this.updateTabSwitch(e.target.checked)
+    })
+
+    this.resetSettings.addEventListener('click', () => {
+      this.handleResetSettings()
     })
 
     // 壁纸设置事件
@@ -306,6 +347,36 @@ class Settings {
       this.emit('searchWidthChanged', parseInt(width))
     } catch (error) {
       console.error('Failed to update search width:', error)
+    }
+  }
+
+  /**
+   * 更新搜索框高度
+   * @param {string} height - 高度值
+   */
+  async updateSearchHeight(height) {
+    try {
+      await storageManager.updateCategory('general', {
+        searchHeight: parseInt(height),
+      })
+      this.emit('searchHeightChanged', parseInt(height))
+    } catch (error) {
+      console.error('Failed to update search height:', error)
+    }
+  }
+
+  /**
+   * 更新搜索框圆角
+   * @param {string} radius - 圆角值
+   */
+  async updateSearchRadius(radius) {
+    try {
+      await storageManager.updateCategory('general', {
+        searchRadius: parseInt(radius),
+      })
+      this.emit('searchRadiusChanged', parseInt(radius))
+    } catch (error) {
+      console.error('Failed to update search radius:', error)
     }
   }
 
@@ -614,6 +685,54 @@ class Settings {
       this.emit('themeChanged', theme)
     } catch (error) {
       console.error('Failed to update theme:', error)
+    }
+  }
+
+  /**
+   * 处理重置设置
+   */
+  async handleResetSettings() {
+    if (!confirm('确定要重置所有常规设置为默认值吗？')) {
+      return
+    }
+
+    try {
+      // 重置为默认值
+      const defaultGeneral = {
+        searchWidth: 600,
+        searchHeight: 50,
+        searchRadius: 12,
+        searchOpacity: 0.8,
+        openIn: 'new-tab',
+        tabSwitch: true,
+      }
+
+      await storageManager.updateCategory('general', defaultGeneral)
+
+      // 更新UI
+      this.searchWidth.value = defaultGeneral.searchWidth
+      this.searchWidthValue.textContent = `${defaultGeneral.searchWidth}px`
+      this.searchHeight.value = defaultGeneral.searchHeight
+      this.searchHeightValue.textContent = `${defaultGeneral.searchHeight}px`
+      this.searchRadius.value = defaultGeneral.searchRadius
+      this.searchRadiusValue.textContent = `${defaultGeneral.searchRadius}px`
+      this.searchOpacity.value = defaultGeneral.searchOpacity
+      this.searchOpacityValue.textContent = defaultGeneral.searchOpacity
+      this.openIn.value = defaultGeneral.openIn
+      this.tabSwitch.checked = defaultGeneral.tabSwitch
+
+      // 触发事件
+      this.emit('searchWidthChanged', defaultGeneral.searchWidth)
+      this.emit('searchHeightChanged', defaultGeneral.searchHeight)
+      this.emit('searchRadiusChanged', defaultGeneral.searchRadius)
+      this.emit('searchOpacityChanged', defaultGeneral.searchOpacity)
+      this.emit('openInChanged', defaultGeneral.openIn)
+      this.emit('tabSwitchChanged', defaultGeneral.tabSwitch)
+
+      alert('设置已重置为默认值')
+    } catch (error) {
+      console.error('Failed to reset settings:', error)
+      alert('重置设置失败')
     }
   }
 

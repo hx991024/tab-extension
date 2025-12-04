@@ -2,18 +2,18 @@
 .settings-drawer {
   position: fixed;
   bottom: 0;
-  left: -560px;
-  width: 560px;
+  left: calc(-1 * clamp(400px, 56vw, 560px));
+  width: clamp(400px, 56vw, 560px);
   height: 70vh;
   background-color: var(--panel-bg-color);
   backdrop-filter: blur(20px);
-  box-shadow: 0 18px 45px var(--shadow-color);
+  box-shadow: 0 1.8vh 4.5vh var(--shadow-color);
   transition: left 0.3s ease;
   z-index: 200;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 20px 20px 0 0;
+  border-radius: clamp(15px, 2vw, 20px) clamp(15px, 2vw, 20px) 0 0;
 }
 
 .settings-drawer.open {
@@ -25,25 +25,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: clamp(15px, 2vh, 20px) clamp(15px, 2vw, 20px);
   border-bottom: 1px solid var(--border-color);
 }
 
 .settings-header h2 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   font-weight: 500;
 }
 
 .settings-close {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
   cursor: pointer;
   background: none;
   border: none;
   color: var(--text-color);
   opacity: 0.7;
   transition: opacity 0.2s;
-  width: 30px;
-  height: 30px;
+  width: clamp(26px, 3vw, 30px);
+  height: clamp(26px, 3vh, 30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,8 +64,8 @@
 
 /* 设置导航 */
 .settings-nav {
-  width: 200px;
-  padding: 12px 0;
+  width: clamp(160px, 20vw, 200px);
+  padding: clamp(10px, 1.2vh, 12px) 0;
   background-color: var(--secondary-color);
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
@@ -85,10 +85,10 @@
 
 .settings-nav .nav-link {
   display: block;
-  padding: 10px 18px;
-  margin: 2px 10px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: clamp(8px, 1vh, 10px) clamp(14px, 1.8vw, 18px);
+  margin: clamp(1px, 0.2vh, 2px) clamp(8px, 1vw, 10px);
+  border-radius: clamp(6px, 0.8vw, 8px);
+  font-size: clamp(13px, 1.4vw, 14px);
   color: var(--text-color);
   font-weight: 500;
   transition: background-color 0.18s ease, color 0.18s ease;
@@ -110,7 +110,7 @@
 /* 设置内容区 */
 .settings-content {
   flex: 1;
-  padding: 20px 24px;
+  padding: clamp(15px, 2vh, 20px) clamp(18px, 2.4vw, 24px);
   background-color: rgba(255, 255, 255, 0.96);
   overflow-y: auto;
 }
@@ -132,9 +132,9 @@
 .setting-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px 0;
-  font-size: 14px;
+  gap: clamp(6px, 0.8vh, 8px);
+  padding: clamp(10px, 1.2vh, 12px) 0;
+  font-size: clamp(13px, 1.4vw, 14px);
   margin-bottom: 0;
   border-bottom: 1px solid var(--border-color);
 }
@@ -152,25 +152,25 @@
 .setting-item-control {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(8px, 1vw, 10px);
 }
 
 /* 滑块样式 */
 input[type='range'] {
   width: 100%;
-  height: 6px;
-  border-radius: 3px;
+  height: clamp(5px, 0.6vh, 6px);
+  border-radius: clamp(2.5px, 0.3vh, 3px);
   background: var(--secondary-color);
   outline: none;
   -webkit-appearance: none;
-  margin: 10px 0;
+  margin: clamp(8px, 1vh, 10px) 0;
 }
 
 input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: clamp(16px, 1.8vw, 18px);
+  height: clamp(16px, 1.8vh, 18px);
   border-radius: 50%;
   background: var(--primary-color);
   cursor: pointer;
@@ -178,8 +178,8 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 input[type='range']::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: clamp(16px, 1.8vw, 18px);
+  height: clamp(16px, 1.8vh, 18px);
   border-radius: 50%;
   background: var(--primary-color);
   cursor: pointer;
@@ -197,7 +197,7 @@ input[type='range']::-moz-range-thumb:hover {
 /* 滑块值显示 */
 .setting-item span {
   display: inline-block;
-  margin-left: 10px;
+  margin-left: clamp(8px, 1vw, 10px);
   font-weight: 500;
   color: var(--primary-color);
 }
@@ -205,12 +205,12 @@ input[type='range']::-moz-range-thumb:hover {
 /* 下拉框样式 */
 select {
   width: 100%;
-  padding: 10px;
+  padding: clamp(8px, 1vh, 10px) clamp(8px, 1vw, 10px);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: clamp(4px, 0.6vw, 6px);
   background-color: var(--input-bg-color);
   color: var(--text-color);
-  font-size: 14px;
+  font-size: clamp(13px, 1.4vw, 14px);
   cursor: pointer;
   outline: none;
 }
@@ -223,8 +223,8 @@ select:focus {
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 26px;
+  width: clamp(44px, 5vw, 50px);
+  height: clamp(22px, 2.6vh, 26px);
 }
 
 .toggle-switch input {
@@ -254,14 +254,14 @@ select:focus {
 .slider:before {
   position: absolute;
   content: '';
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 3px;
+  height: clamp(18px, 2vh, 20px);
+  width: clamp(18px, 2vw, 20px);
+  left: clamp(2px, 0.3vw, 3px);
+  bottom: clamp(2px, 0.3vh, 3px);
   background-color: white;
   transition: 0.3s;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .slider {
@@ -269,7 +269,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(14px);
+  transform: translateX(clamp(12px, 1.4vw, 14px));
 }
 
 /* 文件上传按钮 */
@@ -279,10 +279,10 @@ input[type='file'] {
 
 .file-upload-btn {
   display: inline-block;
-  padding: 8px 16px;
+  padding: clamp(6px, 0.8vh, 8px) clamp(12px, 1.6vw, 16px);
   background-color: var(--secondary-color);
   color: var(--text-color);
-  border-radius: 6px;
+  border-radius: clamp(4px, 0.6vw, 6px);
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.2s;
@@ -295,14 +295,14 @@ input[type='file'] {
 /* 重置壁纸按钮 */
 .reset-wallpaper-btn {
   display: inline-block;
-  padding: 8px 16px;
+  padding: clamp(6px, 0.8vh, 8px) clamp(12px, 1.6vw, 16px);
   background-color: #ff9500;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: clamp(4px, 0.6vw, 6px);
   cursor: pointer;
   font-weight: 500;
-  font-size: 14px;
+  font-size: clamp(13px, 1.4vw, 14px);
   transition: background-color 0.2s;
 }
 
@@ -312,23 +312,23 @@ input[type='file'] {
 
 /* 搜索引擎列表 */
 .engines-list {
-  margin-bottom: 20px;
+  margin-bottom: clamp(15px, 2vh, 20px);
 }
 
 .engine-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
+  padding: clamp(8px, 1vh, 10px) clamp(8px, 1vw, 10px);
+  border-radius: clamp(4px, 0.6vw, 6px);
+  margin-bottom: clamp(8px, 1vh, 10px);
   background-color: var(--input-bg-color);
 }
 
 .engine-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  border-radius: 4px;
+  width: clamp(18px, 2vw, 20px);
+  height: clamp(18px, 2vh, 20px);
+  margin-right: clamp(8px, 1vw, 10px);
+  border-radius: clamp(3px, 0.4vw, 4px);
 }
 
 .engine-name {
@@ -338,13 +338,13 @@ input[type='file'] {
 
 .engine-actions {
   display: flex;
-  gap: 10px;
+  gap: clamp(8px, 1vw, 10px);
 }
 
 .engine-actions button {
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 12px;
+  padding: clamp(4px, 0.5vh, 5px) clamp(8px, 1vw, 10px);
+  border-radius: clamp(3px, 0.4vw, 4px);
+  font-size: clamp(11px, 1.2vw, 12px);
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -370,10 +370,10 @@ input[type='file'] {
 /* 添加按钮 */
 .add-engine-btn {
   width: 100%;
-  padding: 10px;
+  padding: clamp(8px, 1vh, 10px) clamp(8px, 1vw, 10px);
   background-color: var(--primary-color);
   color: white;
-  border-radius: 6px;
+  border-radius: clamp(4px, 0.6vw, 6px);
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -387,14 +387,14 @@ input[type='file'] {
 .theme-options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(8px, 1vh, 10px);
 }
 
 .theme-option {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-radius: 6px;
+  padding: clamp(8px, 1vh, 10px) clamp(8px, 1vw, 10px);
+  border-radius: clamp(4px, 0.6vw, 6px);
   background-color: var(--input-bg-color);
   cursor: pointer;
   transition: background-color 0.2s;
@@ -405,7 +405,7 @@ input[type='file'] {
 }
 
 .theme-option input[type='radio'] {
-  margin-right: 10px;
+  margin-right: clamp(8px, 1vw, 10px);
   cursor: pointer;
 }
 

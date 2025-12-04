@@ -3,24 +3,24 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 600px; /* 默认宽度，会被JS动态调整 */
+  width: clamp(300px, 50vw, 600px); /* 响应式宽度 */
   max-width: 90%;
-  height: 50px;
+  height: clamp(40px, 5vh, 50px);
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: clamp(8px, 1.2vw, 12px);
+  box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: width 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .search-container:focus-within {
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.4vh 2.5vh rgba(0, 0, 0, 0.15);
 }
 
 .search-engine-icon {
-  width: 20px;
-  height: 20px;
-  margin: 0 15px;
+  width: clamp(16px, 2vw, 20px);
+  height: clamp(16px, 2vw, 20px);
+  margin: 0 clamp(10px, 1.5vw, 15px);
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
@@ -31,7 +31,7 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 16px;
+  font-size: clamp(14px, 1.6vw, 16px);
   color: #333;
   transition: color 0.3s ease;
 }
@@ -64,16 +64,16 @@
   color: rgba(245, 245, 245, 0.95);
   line-height: 1.05;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.45);
-  margin-bottom: 24px;
+  margin-bottom: clamp(16px, 2.4vh, 24px);
   transition: color 0.3s ease;
 }
 
 .date {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  font-size: 48px;
+  font-size: clamp(36px, 4.8vw, 48px);
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: clamp(0.5px, 0.1vw, 1px);
   color: rgba(245, 245, 245, 0.9);
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
   transition: color 0.3s ease, opacity 0.3s ease;
@@ -100,15 +100,15 @@
   }
 
   .date {
-    font-size: 18px;
+    font-size: clamp(16px, 2.4vw, 18px);
   }
 
   .search-container {
-    height: 45px;
+    height: clamp(38px, 4.5vh, 45px);
   }
 
   .search-input {
-    font-size: 14px;
+    font-size: clamp(13px, 1.8vw, 14px);
   }
 }
 
@@ -118,20 +118,20 @@
   }
 
   .date {
-    font-size: 16px;
+    font-size: clamp(14px, 3.2vw, 16px);
   }
 
   .search-container {
-    height: 40px;
+    height: clamp(36px, 4vh, 40px);
   }
 
   .search-input {
-    font-size: 14px;
+    font-size: clamp(12px, 2.8vw, 14px);
   }
 
   .search-engine-icon {
-    width: 18px;
-    height: 18px;
-    margin: 0 12px;
+    width: clamp(16px, 3.6vw, 18px);
+    height: clamp(16px, 3.6vw, 18px);
+    margin: 0 clamp(10px, 2.4vw, 12px);
   }
 }

@@ -39,6 +39,9 @@ class App {
       // 绑定模块间事件
       this.bindModuleEvents()
 
+      // 应用初始设置
+      await this.applyInitialSettings()
+
       // 隐藏加载状态
       this.hideLoadingState()
 
@@ -98,6 +101,38 @@ class App {
   }
 
   /**
+   * 应用初始设置
+   * 从存储加载设置并应用到UI
+   */
+  async applyInitialSettings() {
+    try {
+      const generalSettings = await storageManager.getCategory('general')
+
+      // 应用搜索框宽度
+      if (generalSettings.searchWidth !== undefined) {
+        this.updateSearchWidth(generalSettings.searchWidth)
+      }
+
+      // 应用搜索框高度（会同时调整图标和字体大小）
+      if (generalSettings.searchHeight !== undefined) {
+        this.updateSearchHeight(generalSettings.searchHeight)
+      }
+
+      // 应用搜索框圆角
+      if (generalSettings.searchRadius !== undefined) {
+        this.updateSearchRadius(generalSettings.searchRadius)
+      }
+
+      // 应用搜索框透明度
+      if (generalSettings.searchOpacity !== undefined) {
+        this.updateSearchOpacity(generalSettings.searchOpacity)
+      }
+    } catch (error) {
+      console.error('Failed to apply initial settings:', error)
+    }
+  }
+
+  /**
    * 绑定模块间事件
    */
   bindModuleEvents() {
@@ -106,6 +141,16 @@ class App {
     // 搜索框宽度变化
     document.addEventListener('searchWidthChanged', (e) => {
       this.updateSearchWidth(e.detail)
+    })
+
+    // 搜索框高度变化
+    document.addEventListener('searchHeightChanged', (e) => {
+      this.updateSearchHeight(e.detail)
+    })
+
+    // 搜索框圆角变化
+    document.addEventListener('searchRadiusChanged', (e) => {
+      this.updateSearchRadius(e.detail)
     })
 
     // 搜索框透明度变化
@@ -186,6 +231,47 @@ class App {
   }
 
   /**
+   * 更新搜索框高度
+   * @param {number} height - 高度值
+   */
+  updateSearchHeight(height) {
+    const searchContainer = document.getElementById('search-container')
+    const searchEngineIcon = document.getElementById('search-engine-icon')
+    const searchInput = document.getElementById('search-input')
+
+    if (searchContainer) {
+      searchContainer.style.height = `${height}px`
+
+      // 根据高度按比例调整图标大小 (默认比例: 20/50 = 0.4)
+      const iconSize = Math.round(height * 0.4)
+      if (searchEngineIcon) {
+        searchEngineIcon.style.width = `${iconSize}px`
+        searchEngineIcon.style.height = `${iconSize}px`
+        // 调整图标边距 (默认比例: 15/50 = 0.3)
+        const iconMargin = Math.round(height * 0.3)
+        searchEngineIcon.style.margin = `0 ${iconMargin}px`
+      }
+
+      // 根据高度按比例调整字体大小 (默认比例: 16/50 = 0.32)
+      const fontSize = Math.round(height * 0.32)
+      if (searchInput) {
+        searchInput.style.fontSize = `${fontSize}px`
+      }
+    }
+  }
+
+  /**
+   * 更新搜索框圆角
+   * @param {number} radius - 圆角值
+   */
+  updateSearchRadius(radius) {
+    const searchContainer = document.getElementById('search-container')
+    if (searchContainer) {
+      searchContainer.style.borderRadius = `${radius}px`
+    }
+  }
+
+  /**
    * 更新搜索框透明度
    * @param {number} opacity - 透明度值
    */
@@ -230,6 +316,14 @@ class App {
 
       if (general.searchWidth !== undefined) {
         this.updateSearchWidth(general.searchWidth)
+      }
+
+      if (general.searchHeight !== undefined) {
+        this.updateSearchHeight(general.searchHeight)
+      }
+
+      if (general.searchRadius !== undefined) {
+        this.updateSearchRadius(general.searchRadius)
       }
 
       if (general.searchOpacity !== undefined) {
