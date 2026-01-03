@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "极简新标签页",
-  "version": "1.0.1",
+  "name": "新标签页",
+  "version": "1.1.0",
   "description": "一款极简、高性能、高颜值的通用 Chrome / Edge 新标签页扩展。",
-  "author": "Kilo Code",
+  "author": "hx991024",
   "icons": {
     "16": "assets/icons/icon16.png",
     "48": "assets/icons/icon48.png",

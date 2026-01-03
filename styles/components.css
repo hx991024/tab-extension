@@ -3,9 +3,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: clamp(300px, 50vw, 600px); /* 响应式宽度 */
+  width: clamp(300px, 50vw, 650px); /* 响应式宽度 - 默认650px */
   max-width: 90%;
-  height: clamp(40px, 5vh, 50px);
+  height: clamp(40px, 5vh, 55px); /* 响应式高度 - 默认55px */
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: clamp(8px, 1.2vw, 12px);
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);

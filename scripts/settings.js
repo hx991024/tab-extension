@@ -94,7 +94,7 @@ class Settings {
     try {
       // 加载常规设置
       const generalSettings = await storageManager.getCategory('general')
-      this.searchWidth.value = generalSettings.searchWidth || 600
+      this.searchWidth.value = generalSettings.searchWidth || 650
       this.searchWidthValue.textContent = `${this.searchWidth.value}px`
       this.searchHeight.value = generalSettings.searchHeight || 50
       this.searchHeightValue.textContent = `${this.searchHeight.value}px`
@@ -699,8 +699,8 @@ class Settings {
     try {
       // 重置为默认值
       const defaultGeneral = {
-        searchWidth: 600,
-        searchHeight: 50,
+        searchWidth: 650,
+        searchHeight: 55,
         searchRadius: 12,
         searchOpacity: 0.8,
         openIn: 'new-tab',

@@ -8,8 +8,8 @@ class StorageManager {
     this.defaultSettings = {
       // 常规设置
       general: {
-        searchWidth: 600,
-        searchHeight: 50,
+        searchWidth: 650,
+        searchHeight: 55,
         searchRadius: 12,
         searchOpacity: 0.8,
         openIn: 'new-tab', // 'new-tab' | 'current-tab'

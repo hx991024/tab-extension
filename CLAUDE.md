@@ -94,8 +94,8 @@ The codebase uses ES6 modules with a clear separation of concerns:
 ```javascript
 {
   general: {
-    searchWidth: 600,        // px, 400-900
-    searchHeight: 50,        // px, 40-70
+    searchWidth: 650,        // px, 400-900
+    searchHeight: 55,        // px, 40-70
     searchRadius: 12,        // px, 0-30
     searchOpacity: 0.8,      // 0.2-1.0
     openIn: 'new-tab',       // 'new-tab' | 'current-tab'

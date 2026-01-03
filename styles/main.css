@@ -41,14 +41,44 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: clamp(300px, 50vw, 600px); /* 响应式宽度 */
+  width: clamp(300px, 50vw, 650px); /* 响应式宽度 - 默认650px */
   max-width: 90%;
-  height: clamp(40px, 5vh, 50px); /* 响应式高度 */
+  height: clamp(40px, 5vh, 55px); /* 响应式高度 - 默认55px */
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: clamp(8px, 1.2vw, 12px);
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+/* 移动端适配 - 搜索区域 */
+@media (max-width: 768px) {
+  .search-section {
+    padding-top: 18vh;
+  }
+
+  .search-container {
+    width: 92%;
+    max-width: 92%;
+    height: clamp(44px, 6vh, 52px);
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .search-section {
+    padding-top: 16vh;
+  }
+
+  .search-container {
+    width: 94%;
+    max-width: 94%;
+    height: clamp(48px, 7vh, 56px);
+  }
+
+  .search-input {
+    font-size: 16px; /* 防止iOS缩放 */
+  }
 }
 
 .search-engine-icon {
@@ -109,6 +139,40 @@ body {
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
+/* 移动端适配 - 时钟区域 */
+@media (max-width: 768px) {
+  .clock-section {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  .time {
+    font-size: clamp(60px, 16vw, 100px);
+    letter-spacing: 3px;
+    margin-bottom: clamp(12px, 2vh, 18px);
+  }
+
+  .date {
+    font-size: clamp(16px, 2vw, 20px);
+    letter-spacing: clamp(0.3px, 0.08vw, 0.8px);
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .clock-section {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  .time {
+    font-size: clamp(48px, 14vw, 80px);
+    letter-spacing: 2px;
+  }
+
+  .date {
+    font-size: clamp(14px, 1.8vw, 18px);
+  }
+}
+
 /* 设置按钮 */
 .settings-toggle {
   position: fixed;
@@ -135,6 +199,36 @@ body {
   width: clamp(24px, 2.8vw, 28px);
   height: clamp(24px, 2.8vh, 28px);
   opacity: 0.9;
+}
+
+/* 移动端适配 - 设置按钮 */
+@media (max-width: 768px) {
+  .settings-toggle {
+    left: clamp(12px, 2vw, 20px);
+    bottom: clamp(12px, 2vh, 20px);
+    width: clamp(28px, 3.2vw, 32px);
+    height: clamp(28px, 3.2vh, 32px);
+  }
+
+  .settings-icon {
+    width: clamp(28px, 3.2vw, 32px);
+    height: clamp(28px, 3.2vh, 32px);
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .settings-toggle {
+    left: clamp(10px, 1.6vw, 16px);
+    bottom: clamp(10px, 1.6vh, 16px);
+    width: clamp(30px, 3.5vw, 34px);
+    height: clamp(30px, 3.5vh, 34px);
+  }
+
+  .settings-icon {
+    width: clamp(30px, 3.5vw, 34px);
+    height: clamp(30px, 3.5vh, 34px);
+  }
 }
 
 /* 通用按钮样式 */
@@ -258,6 +352,44 @@ ol {
 
 .btn-secondary:hover {
   background-color: var(--secondary-hover-color);
+}
+
+/* 移动端适配 - 模态框 */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 92%;
+    max-width: 92%;
+    max-height: 85vh;
+  }
+
+  .modal-header {
+    padding: clamp(12px, 1.6vh, 16px) clamp(12px, 1.6vw, 16px);
+  }
+
+  .modal-body {
+    padding: clamp(12px, 1.6vh, 16px) clamp(12px, 1.6vw, 16px);
+  }
+
+  .modal-footer {
+    padding: clamp(12px, 1.6vh, 16px) clamp(12px, 1.6vw, 16px);
+    flex-direction: column;
+    gap: clamp(6px, 0.8vh, 8px);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 超小屏幕适配 */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 94%;
+    max-width: 94%;
+    max-height: 90vh;
+  }
 }
 
 /* 表单组 */
