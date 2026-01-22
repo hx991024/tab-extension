@@ -5,9 +5,9 @@
   align-items: center;
   width: max(300px, 40vw); /* 默认宽度 40vw,最小 300px */
   max-width: 90%;
-  height: max(50px, 7vh); /* 默认高度 7vh,最小 50px */
+  height: max(50px, 6vh); /* 默认高度 6vh,最小 50px */
   background-color: rgba(255, 255, 255, 0.8);
-  border-radius: clamp(8px, 1.2vw, 12px);
+  border-radius: 30px;
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease,
@@ -19,9 +19,9 @@
 }
 
 .search-engine-icon {
-  width: max(16px, calc(7vh * 0.4)); /* 默认图标尺寸,最小 16px */
-  height: max(16px, calc(7vh * 0.4));
-  margin: 0 max(12px, calc(7vh * 0.3));
+  width: max(16px, calc(6vh * 0.4)); /* 默认图标尺寸,最小 16px */
+  height: max(16px, calc(6vh * 0.4));
+  margin: 0 max(12px, calc(6vh * 0.3));
   flex-shrink: 0;
   transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease,
     margin 0.3s ease;
@@ -33,11 +33,11 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: max(14px, calc(7vh * 0.32)); /* 默认字体大小,最小 14px */
+  font-size: max(14px, calc(6vh * 0.32)); /* 默认字体大小,最小 14px */
   color: #333;
   display: flex;
   align-items: center;
-  padding-right: max(16px, calc(7vh * 0.35)); /* 右侧内边距 */
+  padding-right: max(16px, calc(6vh * 0.35)); /* 右侧内边距 */
   transition: color 0.3s ease, font-size 0.3s ease;
 }
 

@@ -9,7 +9,7 @@ class StorageManager {
       // 常规设置
       general: {
         searchWidth: 40, // 视口宽度百分比 (30-70)
-        searchHeight: 7, // 视口高度百分比 (4-8)
+        searchHeight: 6, // 视口高度百分比 (4-8)
         searchRadius: 30, // px 圆角半径 (0-30)
         searchOpacity: 0.8,
         openIn: 'new-tab', // 'new-tab' | 'current-tab'
