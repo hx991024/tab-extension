@@ -38,25 +38,25 @@ class Engines {
           id: 'google',
           name: 'Google',
           url: 'https://www.google.com/search?q=%s',
-          icon: 'https://www.google.com/favicon.ico',
+          icon: 'assets/icons/google.ico',
         },
         {
           id: 'bing',
           name: 'Bing',
           url: 'https://www.bing.com/search?q=%s',
-          icon: 'https://www.bing.com/favicon.ico',
+          icon: 'assets/icons/bing.ico',
         },
         {
           id: 'baidu',
           name: '百度',
           url: 'https://www.baidu.com/s?wd=%s',
-          icon: 'https://www.baidu.com/favicon.ico',
+          icon: 'assets/icons/baidu.ico',
         },
         {
           id: 'duckduckgo',
           name: 'DuckDuckGo',
           url: 'https://duckduckgo.com/?q=%s',
-          icon: 'https://duckduckgo.com/favicon.ico',
+          icon: 'assets/icons/duckduckgo.ico',
         },
       ]
       this.defaultEngineId = 'google'
@@ -282,25 +282,25 @@ class Engines {
         id: 'google',
         name: 'Google',
         url: 'https://www.google.com/search?q=%s',
-        icon: 'https://www.google.com/favicon.ico',
+        icon: 'assets/icons/google.ico',
       },
       {
         id: 'bing',
         name: 'Bing',
         url: 'https://www.bing.com/search?q=%s',
-        icon: 'https://www.bing.com/favicon.ico',
+        icon: 'assets/icons/bing.ico',
       },
       {
         id: 'baidu',
         name: '百度',
         url: 'https://www.baidu.com/s?wd=%s',
-        icon: 'https://www.baidu.com/favicon.ico',
+        icon: 'assets/icons/baidu.ico',
       },
       {
         id: 'duckduckgo',
         name: 'DuckDuckGo',
         url: 'https://duckduckgo.com/?q=%s',
-        icon: 'https://duckduckgo.com/favicon.ico',
+        icon: 'assets/icons/duckduckgo.ico',
       },
     ]
 

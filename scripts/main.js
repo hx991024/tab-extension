@@ -221,18 +221,18 @@ class App {
 
   /**
    * 更新搜索框宽度
-   * @param {number} width - 宽度值
+   * @param {number} width - 宽度百分比值 (例如: 40 表示 40vw)
    */
   updateSearchWidth(width) {
     const searchContainer = document.getElementById('search-container')
     if (searchContainer) {
-      searchContainer.style.width = `${width}px`
+      searchContainer.style.width = `max(300px, ${width}vw)`
     }
   }
 
   /**
    * 更新搜索框高度
-   * @param {number} height - 高度值
+   * @param {number} height - 高度百分比值 (例如: 7 表示 7vh)
    */
   updateSearchHeight(height) {
     const searchContainer = document.getElementById('search-container')
@@ -240,22 +240,20 @@ class App {
     const searchInput = document.getElementById('search-input')
 
     if (searchContainer) {
-      searchContainer.style.height = `${height}px`
+      searchContainer.style.height = `max(50px, ${height}vh)`
 
-      // 根据高度按比例调整图标大小 (默认比例: 20/50 = 0.4)
-      const iconSize = Math.round(height * 0.4)
+      // 根据高度按比例调整图标大小
+      // 使用 max() 确保最小尺寸,使用 calc() 计算图标尺寸 (高度的 40%)
       if (searchEngineIcon) {
-        searchEngineIcon.style.width = `${iconSize}px`
-        searchEngineIcon.style.height = `${iconSize}px`
-        // 调整图标边距 (默认比例: 15/50 = 0.3)
-        const iconMargin = Math.round(height * 0.3)
-        searchEngineIcon.style.margin = `0 ${iconMargin}px`
+        searchEngineIcon.style.width = `max(16px, calc(${height}vh * 0.4))`
+        searchEngineIcon.style.height = `max(16px, calc(${height}vh * 0.4))`
+        // 调整图标边距 (高度的 30%)
+        searchEngineIcon.style.margin = `0 max(12px, calc(${height}vh * 0.3))`
       }
 
-      // 根据高度按比例调整字体大小 (默认比例: 16/50 = 0.32)
-      const fontSize = Math.round(height * 0.32)
+      // 根据高度按比例调整字体大小 (高度的 32%)
       if (searchInput) {
-        searchInput.style.fontSize = `${fontSize}px`
+        searchInput.style.fontSize = `max(14px, calc(${height}vh * 0.32))`
       }
     }
   }

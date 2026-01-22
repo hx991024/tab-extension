@@ -8,9 +8,9 @@ class StorageManager {
     this.defaultSettings = {
       // 常规设置
       general: {
-        searchWidth: 650,
-        searchHeight: 55,
-        searchRadius: 12,
+        searchWidth: 40, // 视口宽度百分比 (30-70)
+        searchHeight: 7, // 视口高度百分比 (4-8)
+        searchRadius: 30, // px 圆角半径 (0-30)
         searchOpacity: 0.8,
         openIn: 'new-tab', // 'new-tab' | 'current-tab'
         tabSwitch: true,
@@ -29,25 +29,25 @@ class StorageManager {
             id: 'google',
             name: 'Google',
             url: 'https://www.google.com/search?q=%s',
-            icon: 'https://www.google.com/favicon.ico',
+            icon: 'assets/icons/google.ico',
           },
           {
             id: 'bing',
             name: 'Bing',
             url: 'https://www.bing.com/search?q=%s',
-            icon: 'https://www.bing.com/favicon.ico',
+            icon: 'assets/icons/bing.ico',
           },
           {
             id: 'baidu',
             name: '百度',
             url: 'https://www.baidu.com/s?wd=%s',
-            icon: 'https://www.baidu.com/favicon.ico',
+            icon: 'assets/icons/baidu.ico',
           },
           {
             id: 'duckduckgo',
             name: 'DuckDuckGo',
             url: 'https://duckduckgo.com/?q=%s',
-            icon: 'https://duckduckgo.com/favicon.ico',
+            icon: 'assets/icons/duckduckgo.ico',
           },
         ],
       },

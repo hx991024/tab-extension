@@ -94,11 +94,11 @@ class Settings {
     try {
       // 加载常规设置
       const generalSettings = await storageManager.getCategory('general')
-      this.searchWidth.value = generalSettings.searchWidth || 650
-      this.searchWidthValue.textContent = `${this.searchWidth.value}px`
-      this.searchHeight.value = generalSettings.searchHeight || 50
-      this.searchHeightValue.textContent = `${this.searchHeight.value}px`
-      this.searchRadius.value = generalSettings.searchRadius || 12
+      this.searchWidth.value = generalSettings.searchWidth || 40
+      this.searchWidthValue.textContent = `${this.searchWidth.value}%`
+      this.searchHeight.value = generalSettings.searchHeight || 7
+      this.searchHeightValue.textContent = `${this.searchHeight.value}%`
+      this.searchRadius.value = generalSettings.searchRadius || 30
       this.searchRadiusValue.textContent = `${this.searchRadius.value}px`
       this.searchOpacity.value = generalSettings.searchOpacity || 0.8
       this.searchOpacityValue.textContent = this.searchOpacity.value
@@ -161,7 +161,7 @@ class Settings {
     // 常规设置事件
     this.searchWidth.addEventListener('input', (e) => {
       const value = e.target.value
-      this.searchWidthValue.textContent = `${value}px`
+      this.searchWidthValue.textContent = `${value}%`
 
       // 使用防抖减少更新频率
       if (this.searchWidthDebounce) {
@@ -174,7 +174,7 @@ class Settings {
 
     this.searchHeight.addEventListener('input', (e) => {
       const value = e.target.value
-      this.searchHeightValue.textContent = `${value}px`
+      this.searchHeightValue.textContent = `${value}%`
 
       // 使用防抖减少更新频率
       if (this.searchHeightDebounce) {
@@ -337,14 +337,14 @@ class Settings {
 
   /**
    * 更新搜索框宽度
-   * @param {string} width - 宽度值
+   * @param {string} width - 宽度值 (百分比)
    */
   async updateSearchWidth(width) {
     try {
       await storageManager.updateCategory('general', {
-        searchWidth: parseInt(width),
+        searchWidth: parseFloat(width),
       })
-      this.emit('searchWidthChanged', parseInt(width))
+      this.emit('searchWidthChanged', parseFloat(width))
     } catch (error) {
       console.error('Failed to update search width:', error)
     }
@@ -352,14 +352,14 @@ class Settings {
 
   /**
    * 更新搜索框高度
-   * @param {string} height - 高度值
+   * @param {string} height - 高度值 (百分比)
    */
   async updateSearchHeight(height) {
     try {
       await storageManager.updateCategory('general', {
-        searchHeight: parseInt(height),
+        searchHeight: parseFloat(height),
       })
-      this.emit('searchHeightChanged', parseInt(height))
+      this.emit('searchHeightChanged', parseFloat(height))
     } catch (error) {
       console.error('Failed to update search height:', error)
     }
@@ -699,9 +699,9 @@ class Settings {
     try {
       // 重置为默认值
       const defaultGeneral = {
-        searchWidth: 650,
-        searchHeight: 55,
-        searchRadius: 12,
+        searchWidth: 40,
+        searchHeight: 7,
+        searchRadius: 30,
         searchOpacity: 0.8,
         openIn: 'new-tab',
         tabSwitch: true,
@@ -711,9 +711,9 @@ class Settings {
 
       // 更新UI
       this.searchWidth.value = defaultGeneral.searchWidth
-      this.searchWidthValue.textContent = `${defaultGeneral.searchWidth}px`
+      this.searchWidthValue.textContent = `${defaultGeneral.searchWidth}%`
       this.searchHeight.value = defaultGeneral.searchHeight
-      this.searchHeightValue.textContent = `${defaultGeneral.searchHeight}px`
+      this.searchHeightValue.textContent = `${defaultGeneral.searchHeight}%`
       this.searchRadius.value = defaultGeneral.searchRadius
       this.searchRadiusValue.textContent = `${defaultGeneral.searchRadius}px`
       this.searchOpacity.value = defaultGeneral.searchOpacity

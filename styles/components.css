@@ -3,14 +3,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: clamp(300px, 50vw, 650px); /* 响应式宽度 - 默认650px */
+  width: max(300px, 40vw); /* 默认宽度 40vw,最小 300px */
   max-width: 90%;
-  height: clamp(40px, 5vh, 55px); /* 响应式高度 - 默认55px */
+  height: max(50px, 7vh); /* 默认高度 7vh,最小 50px */
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: clamp(8px, 1.2vw, 12px);
   box-shadow: 0 0.4vh 2vh rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
-  transition: width 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .search-container:focus-within {
@@ -18,11 +19,12 @@
 }
 
 .search-engine-icon {
-  width: clamp(16px, 2vw, 20px);
-  height: clamp(16px, 2vw, 20px);
-  margin: 0 clamp(10px, 1.5vw, 15px);
+  width: max(16px, calc(7vh * 0.4)); /* 默认图标尺寸,最小 16px */
+  height: max(16px, calc(7vh * 0.4));
+  margin: 0 max(12px, calc(7vh * 0.3));
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, width 0.3s ease, height 0.3s ease,
+    margin 0.3s ease;
 }
 
 .search-input {
@@ -31,9 +33,12 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: clamp(14px, 1.6vw, 16px);
+  font-size: max(14px, calc(7vh * 0.32)); /* 默认字体大小,最小 14px */
   color: #333;
-  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding-right: max(16px, calc(7vh * 0.35)); /* 右侧内边距 */
+  transition: color 0.3s ease, font-size 0.3s ease;
 }
 
 .search-input::placeholder {
@@ -96,42 +101,54 @@
 /* 响应式调整 */
 @media (max-width: 768px) {
   .time {
-    font-size: clamp(60px, 16vw, 100px);
+    font-size: clamp(80px, 18vw, 140px);
   }
 
   .date {
-    font-size: clamp(16px, 2.4vw, 18px);
+    font-size: clamp(20px, 3.5vw, 28px);
   }
 
   .search-container {
-    height: clamp(38px, 4.5vh, 45px);
+    width: max(320px, 70vw) !important; /* 移动端搜索框宽度增大到 70vw */
+    height: max(56px, 8vh) !important; /* 移动端搜索框高度增大到 8vh */
+    max-width: 95%;
+  }
+
+  .search-engine-icon {
+    width: max(20px, calc(8vh * 0.4)) !important;
+    height: max(20px, calc(8vh * 0.4)) !important;
+    margin: 0 max(14px, calc(8vh * 0.3)) !important;
   }
 
   .search-input {
-    font-size: clamp(13px, 1.8vw, 14px);
+    font-size: max(15px, calc(8vh * 0.32)) !important;
+    padding-right: max(18px, calc(8vh * 0.35)) !important;
   }
 }
 
 @media (max-width: 480px) {
   .time {
-    font-size: clamp(50px, 14vw, 80px);
+    font-size: clamp(70px, 16vw, 120px);
   }
 
   .date {
-    font-size: clamp(14px, 3.2vw, 16px);
+    font-size: clamp(18px, 4vw, 24px);
   }
 
   .search-container {
-    height: clamp(36px, 4vh, 40px);
-  }
-
-  .search-input {
-    font-size: clamp(12px, 2.8vw, 14px);
+    width: max(280px, 80vw) !important; /* 小屏幕搜索框宽度增大到 80vw */
+    height: max(54px, 7.5vh) !important; /* 小屏幕搜索框高度增大到 7.5vh */
+    max-width: 95%;
   }
 
   .search-engine-icon {
-    width: clamp(16px, 3.6vw, 18px);
-    height: clamp(16px, 3.6vw, 18px);
-    margin: 0 clamp(10px, 2.4vw, 12px);
+    width: max(18px, calc(7.5vh * 0.4)) !important;
+    height: max(18px, calc(7.5vh * 0.4)) !important;
+    margin: 0 max(12px, calc(7.5vh * 0.3)) !important;
+  }
+
+  .search-input {
+    font-size: max(14px, calc(7.5vh * 0.32)) !important;
+    padding-right: max(16px, calc(7.5vh * 0.35)) !important;
   }
 }
