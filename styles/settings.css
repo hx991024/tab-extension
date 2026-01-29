@@ -480,6 +480,24 @@ input[type='file'] {
   background-color: #e6850e;
 }
 
+/* 危险按钮 */
+.danger-btn {
+  display: inline-block;
+  padding: clamp(6px, 0.8vh, 8px) clamp(12px, 1.6vw, 16px);
+  background-color: #ff3b30;
+  color: white;
+  border: none;
+  border-radius: clamp(4px, 0.6vw, 6px);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: clamp(13px, 1.4vw, 14px);
+  transition: background-color 0.2s;
+}
+
+.danger-btn:hover {
+  background-color: #d70015;
+}
+
 /* 搜索引擎列表 */
 .engines-list {
   margin-bottom: clamp(15px, 2vh, 20px);

@@ -33,6 +33,7 @@ class Settings {
     this.openIn = document.getElementById('open-in')
     this.tabSwitch = document.getElementById('tab-switch')
     this.resetSettings = document.getElementById('reset-settings')
+    this.clearData = document.getElementById('clear-data')
 
     // 壁纸设置元素
     this.wallpaperUpload = document.getElementById('wallpaper-upload')
@@ -221,6 +222,10 @@ class Settings {
 
     this.resetSettings.addEventListener('click', () => {
       this.handleResetSettings()
+    })
+
+    this.clearData.addEventListener('click', () => {
+      this.handleClearData()
     })
 
     // 壁纸设置事件
@@ -733,6 +738,25 @@ class Settings {
     } catch (error) {
       console.error('Failed to reset settings:', error)
       alert('重置设置失败')
+    }
+  }
+
+  /**
+   * 清理所有数据
+   */
+  async handleClearData() {
+    if (!confirm('确定要清理所有数据吗？此操作不可恢复，所有设置将被重置为默认值。')) {
+      return
+    }
+
+    try {
+      await storageManager.clear()
+      alert('数据已清理完成，刷新页面后将使用默认值')
+      // 刷新页面以应用默认值
+      location.reload()
+    } catch (error) {
+      console.error('Failed to clear data:', error)
+      alert('清理数据失败')
     }
   }
 

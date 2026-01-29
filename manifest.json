@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "新标签页",
-  "version": "1.1.0",
-  "description": "一款极简、高性能、高颜值的通用 Chrome / Edge 新标签页扩展。",
+  "version": "1.2.0",
+  "description": "一款 Chrome / Edge 新标签页扩展。",
   "author": "hx991024",
   "icons": {
     "16": "assets/icons/icon16.png",
@@ -18,6 +18,6 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "极简新标签页设置"
+    "default_title": "新标签页设置"
   }
 }
